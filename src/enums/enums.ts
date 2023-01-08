@@ -3,3 +3,8 @@ export enum DefaultGameInputs {
   PAPER = "Paper",
   SCISSORS = "Scissors",
 }
+
+export enum GameMode {
+  PlayerVsComputer = "PlayerVsComputer",
+  ComputerVsComputer = "ComputerVsComputer",
+}

@@ -33,6 +33,7 @@ function PlayerVsCPU({ rules = defaultRules }: Props) {
   };
 
   const userOptionChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setResult('');
     setUserInput(e.target.value);
   };
 
@@ -46,6 +47,7 @@ function PlayerVsCPU({ rules = defaultRules }: Props) {
         <h2>Player vs Computer</h2>
       </div>
       <div>
+        Choose Your Move:
         <Select
           onChange={userOptionChangeHandler}
           options={selectInputs}
