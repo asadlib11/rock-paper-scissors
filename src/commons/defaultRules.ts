@@ -3,5 +3,3 @@ export const defaultRules = {
   Paper: "Rock",
   Scissors: "Paper",
 };
-
-export const getWinner = (playerName: string) => `${playerName} wins!`;

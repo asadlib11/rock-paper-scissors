@@ -1,11 +1,14 @@
-import React from 'react';
-import RockPaperScissors from './modules/rock-paper-scissors';
-import './App.css';
+import React from "react";
+import PlayerVsCPU from "./modules/PlayerVsCPU";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <RockPaperScissors />
+      <div>
+        <h1>Rock Paper Scissors</h1>
+      </div>
+      <PlayerVsCPU />
     </div>
   );
 }
