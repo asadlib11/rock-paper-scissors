@@ -8,15 +8,13 @@ type Props = {
 
 function Select({ options, onChange }: Props) {
   return (
-    <div>
-      <select onChange={(e) => onChange(e)}>
-        {options.map((data) => (
-          <option value={data.value} key={`option-${data.label}`}>
-            {data.label}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select onChange={(e) => onChange(e)}>
+      {options.map((data) => (
+        <option value={data.value} key={`option-${data.label}`}>
+          {data.label}
+        </option>
+      ))}
+    </select>
   );
 }
 
