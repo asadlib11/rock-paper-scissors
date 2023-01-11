@@ -12,24 +12,25 @@ type Props = {
 
 function CpuVsCpu({ rules = defaultRules }: Props) {
   const [result, setResult] = React.useState("");
-  const [cpu1Input, setCpu1Input] = React.useState("");
-  const [cpu2Input, setCpu2Input] = React.useState("");
+  const cpu1Input = React.useRef("");
+  const cpu2Input = React.useRef("");
+
 
   const handlePlayClick = () => {
     generateCPUInputs();
-    if (cpu1Input === cpu2Input) {
+    if (cpu1Input.current === cpu2Input.current) {
       setResult("Draw");
       return;
-    } else if (rules[cpu1Input] === cpu2Input) {
+    } else if (rules[cpu1Input.current] === cpu2Input.current) {
       setResult(getWinner("CPU 1"));
-    } else if (rules[cpu2Input] === cpu1Input) {
+    } else if (rules[cpu2Input.current] === cpu1Input.current) {
       setResult(getWinner(`CPU 2`));
     }
   };
 
   const generateCPUInputs = () => {
-    setCpu1Input(randomProperty(rules));
-    setCpu2Input(randomProperty(rules));
+    cpu1Input.current = (randomProperty(rules));
+    cpu2Input.current = (randomProperty(rules));
   };
 
   return (
@@ -38,15 +39,15 @@ function CpuVsCpu({ rules = defaultRules }: Props) {
         <h2>CPU1 vs CPU2</h2>
       </div>
       <div>
-        {cpu1Input && <h4>CPU1: {cpu1Input}</h4>}
-        {cpu2Input && <h4>CPU2: {cpu2Input}</h4>}
+        {cpu1Input && <h4>CPU1: <span data-testid="cpu1Input">{cpu1Input.current}</span></h4>}
+        {cpu2Input && <h4>CPU2: <span data-testid="cpu2Input">{cpu2Input.current}</span></h4>}
       </div>
       <div>
         <button onClick={handlePlayClick}>Play</button>
       </div>
       {result && (
         <div>
-          <h3>{result}</h3>
+          <h3 data-testid="result">{result}</h3>
         </div>
       )}
     </div>

@@ -14,9 +14,7 @@ type Props = {
 };
 
 function PlayerVsCPU({ rules = defaultRules }: Props) {
-  const [userInput, setUserInput] = React.useState<string>(
-    DefaultGameInputs.PAPER
-  );
+  const [userInput, setUserInput] = React.useState<string>('');
   const cpuInput = React.useRef("");
   const [result, setResult] = React.useState("");
   const selectInputs = mapRulesForSelect(rules);
@@ -48,19 +46,20 @@ function PlayerVsCPU({ rules = defaultRules }: Props) {
         <h2>Player vs Computer</h2>
       </div>
       <div>
-        Choose Your Move:
+        Choose Your Move: <span data-testid="userInput">{userInput || ''}</span>
         <Select
           onChange={userOptionChangeHandler}
           options={selectInputs}
+          value={userInput}
         ></Select>
       </div>
-      {result && <div>CPU Chose: {cpuInput.current}</div>}
+      {result && <div>CPU Chose: <span data-testid="cpuInput">{cpuInput.current}</span></div>}
       <div>
         <button onClick={handlePlayClick}>Play</button>
       </div>
       {result && (
         <div>
-          <h3>{result}</h3>
+          <h3 data-testid="result">{result}</h3>
         </div>
       )}
     </div>

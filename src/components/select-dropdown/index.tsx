@@ -3,12 +3,13 @@ import { SelectDropdown } from "../../types";
 
 type Props = {
   options: SelectDropdown[];
+  value?: string,
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-function Select({ options, onChange }: Props) {
+function Select({ options, value = '', onChange }: Props) {
   return (
-    <select onChange={(e) => onChange(e)}>
+    <select data-testid="select" onChange={(e) => onChange(e)} value={value}>
       {options.map((data) => (
         <option value={data.value} key={`option-${data.label}`}>
           {data.label}
