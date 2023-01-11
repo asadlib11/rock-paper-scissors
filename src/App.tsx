@@ -20,6 +20,7 @@ function App() {
             onClick={() => {
               setMode(GameMode.PlayerVsComputer);
             }}
+            data-testid="playerVsComputerBtn"
           >
             Player Vs Computer
           </button>
@@ -27,6 +28,7 @@ function App() {
             onClick={() => {
               setMode(GameMode.ComputerVsComputer);
             }}
+            data-testid="computerVsComputerBtn"
           >
             Computer Vs Computer
           </button>
@@ -42,6 +44,7 @@ function App() {
             onClick={() => {
               setMode("");
             }}
+            data-testid="backBtn"
           >
             Back to Main page
           </button>
