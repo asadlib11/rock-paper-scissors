@@ -17,28 +17,29 @@ function PlayerVsCPU({ rules = defaultRules }: Props) {
   const [userInput, setUserInput] = React.useState<string>(
     DefaultGameInputs.PAPER
   );
+  const cpuInput = React.useRef("");
   const [result, setResult] = React.useState("");
   const selectInputs = mapRulesForSelect(rules);
 
   const handlePlayClick = () => {
-    const cpuInput = generateCPUInput();
-    if (userInput === cpuInput) {
+    generateCPUInput();
+    if (userInput === cpuInput.current) {
       setResult("Draw");
       return;
-    } else if (rules[userInput] === cpuInput) {
+    } else if (rules[userInput] === cpuInput.current) {
       setResult(getWinner("Player"));
-    } else if (rules[cpuInput] === userInput) {
-      setResult(getWinner(`Computer with ${cpuInput}`));
+    } else if (rules[cpuInput.current] === userInput) {
+      setResult(getWinner(`Computer with ${cpuInput.current}`));
     }
   };
 
   const userOptionChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setResult('');
+    setResult("");
     setUserInput(e.target.value);
   };
 
   const generateCPUInput = () => {
-    return randomProperty(rules);
+    cpuInput.current = randomProperty(rules);;
   };
 
   return (
@@ -53,6 +54,7 @@ function PlayerVsCPU({ rules = defaultRules }: Props) {
           options={selectInputs}
         ></Select>
       </div>
+      {result && <div>CPU Chose: {cpuInput.current}</div>}
       <div>
         <button onClick={handlePlayClick}>Play</button>
       </div>
