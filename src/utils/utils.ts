@@ -1,9 +1,9 @@
-export const randomProperty = (obj: any) => {
+export const randomProperty = (obj: { [key: string]: string; }) => {
   let keys = Object.keys(obj);
   return obj[keys[(keys.length * Math.random()) << 0]];
 };
 
-export const mapRulesForSelect = (obj: any) => {
+export const mapRulesForSelect = (obj: { [key: string]: string; }) => {
     let keys = Object.keys(obj);
     const array = Array(keys.length);
     for (const key of keys) {

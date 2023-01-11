@@ -1,7 +1,6 @@
 import React from "react";
 import { defaultRules } from "../../commons/defaultRules";
 import Select from "../../components/select-dropdown";
-import { DefaultGameInputs } from "../../enums/enums";
 import {
   getWinner,
   randomProperty,
@@ -10,7 +9,7 @@ import {
 import "./styles.css";
 
 type Props = {
-  rules?: any;
+  rules?: { [key: string]: string; };
 };
 
 function PlayerVsCPU({ rules = defaultRules }: Props) {

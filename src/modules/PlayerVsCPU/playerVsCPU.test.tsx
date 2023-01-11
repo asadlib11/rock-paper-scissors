@@ -40,7 +40,7 @@ test("test game with default inputs", () => {
 
   const result = screen.getByTestId("result").textContent;
   let resultText = '';
-  const rules: any = {...defaultRules};
+  const rules: { [key: string]: string; } = {...defaultRules};
   if (CPUInput === playerInput) {
     resultText = 'Draw';
   } else if (rules[CPUInput] === playerInput) {

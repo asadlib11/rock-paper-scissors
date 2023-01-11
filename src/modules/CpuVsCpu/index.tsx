@@ -7,7 +7,7 @@ import {
 import "./styles.css";
 
 type Props = {
-  rules?: any;
+  rules?: { [key: string]: string; };
 };
 
 function CpuVsCpu({ rules = defaultRules }: Props) {

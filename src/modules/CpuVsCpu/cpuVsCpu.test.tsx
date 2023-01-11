@@ -36,7 +36,7 @@ test("test game with default inputs", () => {
     resultText = 'Draw';
   }
 
-  const rules: any = {...defaultRules};
+  const rules: { [key: string]: string; } = {...defaultRules};
   if (rules[CPUInput1] === CPUInput2) {
     resultText = 'CPU 1 wins!';
   } else if (rules[CPUInput2] === CPUInput1){
